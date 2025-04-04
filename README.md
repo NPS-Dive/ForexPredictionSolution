@@ -1,7 +1,3 @@
-Below is a comprehensive `README.md` file for your `ForexPrediction` project. It describes the solution, its structure, setup instructions, and usage examples, making it suitable for showcasing on GitHub as a sample project. I’ve tailored it to reflect the current state of your project with `Guid` IDs, the `BaseEntity` pattern, and all features implemented so far.
-
----
-
 # ForexPrediction
 
 ![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.8-blue)
