@@ -226,7 +226,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or feedback, feel free to open an issue or contact me at [your-email@example.com](mailto:amirmohammadshi@gmail.com).
+For questions or feedback, feel free to open an issue or contact me at [amirmohammadshi@gmail.com](mailto:amirmohammadshi@gmail.com).
 
 ---
 
