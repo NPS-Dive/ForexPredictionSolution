@@ -1,0 +1,1 @@
+# ForexPredictionSolution
