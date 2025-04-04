@@ -228,8 +228,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or feedback, feel free to open an issue or contact me at [amirmohammadshi@gmail.com](mailto:amirmohammadshi@gmail.com).
 
----
-
-Replace placeholders like `yourusername` and `your-email@example.com` with your actual GitHub username and email. Add a `LICENSE` file to your repository if you choose to include one (e.g., MIT License text).
-
-This `README.md` should effectively showcase your project on GitHub, providing clear instructions and context for potential users or contributors. Let me know if you’d like to tweak it further!
