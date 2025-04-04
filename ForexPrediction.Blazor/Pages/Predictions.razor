@@ -1,0 +1,99 @@
+﻿@page "/predictions"
+@inject HttpClient Http
+@using ForexPrediction.Domain.Entities
+@using LiveChartsCore
+@using LiveChartsCore.SkiaSharpView
+@using Microsoft.AspNetCore.Authorization
+
+<AuthorizeView>
+    <Authorized>
+        <h3>FOREX Predictions</h3>
+        <div class="form-group">
+            <label>Select Pair:</label>
+            <select class="form-control" @bind="selectedPair">
+                <option value="EUR/USD">EUR/USD</option>
+                <option value="GBP/USD">GBP/USD</option>
+                <option value="USD/JPY">USD/JPY</option>
+                <option value="AUD/USD">AUD/USD</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Days to Predict:</label>
+            <input type="number" class="form-control" @bind="days" min="1" max="30" />
+        </div>
+        <button class="btn btn-primary" @onclick="GetPredictions">Get Predictions</button>
+
+        @if (predictions != null)
+        {
+            <h4>Predictions for @selectedPair</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Predicted Close</th>
+                        <th>Signal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var prediction in predictions)
+                    {
+                        <tr>
+                            <td>@prediction.Date.ToShortDateString()</td>
+                            <td>@prediction.PredictedClose</td>
+                            <td>@prediction.Signal</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <LiveChartsCore.SkiaSharpView.Chart Series="series" XAxes="xAxes" YAxes="yAxes" Height="400" />
+        }
+
+        <h4>Power BI Report</h4>
+        <div id="reportContainer" style="height: 500px;"></div>
+    </Authorized>
+    <NotAuthorized>
+        <p>Please log in to view predictions.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private string selectedPair = "EUR/USD";
+    private int days = 7;
+    private List<Prediction> predictions;
+    private IEnumerable<ISeries> series;
+    private Axis[] xAxes = new[] { new Axis { Labels = new List<string>() } };
+    private Axis[] yAxes = new[] { new Axis { Name = "Price" } };
+
+    private async Task GetPredictions()
+    {
+        predictions = await Http.GetFromJsonAsync<List<Prediction>>(
+            $"api/Prediction/{selectedPair}?startDate={DateTime.Now}&days={days}");
+
+        series = new ISeries[]
+        {
+            new LineSeries<decimal>
+            {
+                Values = predictions.Select(p => p.PredictedClose).ToList(),
+                Name = "Predicted Close"
+            }
+        };
+        xAxes[0].Labels = predictions.Select(p => p.Date.ToShortDateString()).ToList();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var config = new
+            {
+                type = "report",
+                embedUrl = @Configuration["PowerBI:EmbedUrl"],
+                tokenType = "Embed",
+                accessToken = @Configuration["PowerBI:AccessToken"],
+                id = @Configuration["PowerBI:ReportId"]
+            };
+            await JSRuntime.InvokeVoidAsync("powerbi.embed", "reportContainer", config);
+        }
+    }
+}

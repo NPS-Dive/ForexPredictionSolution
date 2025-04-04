@@ -1,0 +1,53 @@
+﻿@page "/upload"
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Authorization
+
+<AuthorizeView>
+    <Authorized>
+        <h3>Upload FOREX Data</h3>
+        <div class="form-group">
+            <label>Select Pair:</label>
+            <select class="form-control" @bind="selectedPair">
+                <option value="EUR/USD">EUR/USD</option>
+                <option value="GBP/USD">GBP/USD</option>
+                <option value="USD/JPY">USD/JPY</option>
+                <option value="AUD/USD">AUD/USD</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <InputFile OnChange="@LoadFile" />
+        </div>
+        <button class="btn btn-success" @onclick="UploadData">Upload</button>
+        <p>@uploadMessage</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>Please log in to upload data.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private string selectedPair = "EUR/USD";
+    private string uploadMessage;
+    private IBrowserFile uploadedFile;
+
+    private async Task LoadFile ( InputFileChangeEventArgs e )
+        {
+        uploadedFile = e.File;
+        }
+
+    private async Task UploadData ()
+        {
+        if (uploadedFile == null)
+            {
+            uploadMessage = "Please select a file.";
+            return;
+            }
+
+        using var content = new MultipartFormDataContent();
+        using var stream = uploadedFile.OpenReadStream();
+        content.Add(new StreamContent(stream), "file", uploadedFile.Name);
+
+        var response = await Http.PostAsync($"api/Data/upload/{selectedPair}", content);
+        uploadMessage = await response.Content.ReadAsStringAsync();
+        }
+}

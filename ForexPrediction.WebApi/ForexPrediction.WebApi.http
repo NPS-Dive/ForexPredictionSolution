@@ -1,0 +1,6 @@
+@ForexPrediction.WebApi_HostAddress = http://localhost:5022
+
+GET {{ForexPrediction.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

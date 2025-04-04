@@ -1,0 +1,44 @@
+﻿@page "/login"
+@using ForexPrediction.Domain.Entities
+@using Microsoft.AspNetCore.Identity
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject SignInManager<ApplicationUser> SignInManager
+
+<h3>Login</h3>
+<div class="form-group">
+    <label>Email:</label>
+    <input type="email" class="form-control" @bind="email" />
+</div>
+<div class="form-group">
+    <label>Password:</label>
+    <input type="password" class="form-control" @bind="password" />
+</div>
+<button class="btn btn-primary" @onclick="LoginUser">Login</button>
+<p>@message</p>
+
+@code {
+    private string email;
+    private string password;
+    private string message;
+
+    private async Task LoginUser ()
+        {
+        try
+            {
+            var response = await Http.PostAsJsonAsync("api/Account/login", new { Email = email, Password = password });
+            var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
+            await SignInManager.SignInAsync(await SignInManager.UserManager.FindByEmailAsync(email), isPersistent: false);
+            Navigation.NavigateTo("/");
+            }
+        catch (Exception ex)
+            {
+            message = ex.Message;
+            }
+        }
+
+    public class LoginResponse
+        {
+        public string Token { get; set; }
+        }
+}

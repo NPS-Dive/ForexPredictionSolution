@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexPrediction.Domain", "ForexPrediction.Domain\ForexPrediction.Domain.csproj", "{3419BEFC-0BFF-42B2-806F-D65887DC51A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexPrediction.Application", "ForexPrediction.Application\ForexPrediction.Application.csproj", "{F6370404-2132-432C-B81A-20786EE0E20E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexPrediction.Infrastructure", "ForexPrediction.Infrastructure\ForexPrediction.Infrastructure.csproj", "{D47B171E-1B63-482B-A0AD-A986D225DCC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexPrediction.WebApi", "ForexPrediction.WebApi\ForexPrediction.WebApi.csproj", "{130115D1-C9FF-41F9-9FBB-AE42C11ED523}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexPrediction.Blazor", "ForexPrediction.Blazor\ForexPrediction.Blazor.csproj", "{B82C85B3-B094-49F2-90CD-C0FD95B60AB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexPrediction.AITests", "ForexPrediction.AITests\ForexPrediction.AITests.csproj", "{83F2F878-5DEC-440C-AABC-88C86A05E805}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3419BEFC-0BFF-42B2-806F-D65887DC51A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3419BEFC-0BFF-42B2-806F-D65887DC51A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3419BEFC-0BFF-42B2-806F-D65887DC51A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3419BEFC-0BFF-42B2-806F-D65887DC51A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6370404-2132-432C-B81A-20786EE0E20E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6370404-2132-432C-B81A-20786EE0E20E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6370404-2132-432C-B81A-20786EE0E20E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6370404-2132-432C-B81A-20786EE0E20E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47B171E-1B63-482B-A0AD-A986D225DCC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47B171E-1B63-482B-A0AD-A986D225DCC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47B171E-1B63-482B-A0AD-A986D225DCC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47B171E-1B63-482B-A0AD-A986D225DCC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{130115D1-C9FF-41F9-9FBB-AE42C11ED523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130115D1-C9FF-41F9-9FBB-AE42C11ED523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130115D1-C9FF-41F9-9FBB-AE42C11ED523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130115D1-C9FF-41F9-9FBB-AE42C11ED523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82C85B3-B094-49F2-90CD-C0FD95B60AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82C85B3-B094-49F2-90CD-C0FD95B60AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82C85B3-B094-49F2-90CD-C0FD95B60AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82C85B3-B094-49F2-90CD-C0FD95B60AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83F2F878-5DEC-440C-AABC-88C86A05E805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F2F878-5DEC-440C-AABC-88C86A05E805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F2F878-5DEC-440C-AABC-88C86A05E805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F2F878-5DEC-440C-AABC-88C86A05E805}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {782BC7B7-45C7-4A4B-BA8F-E0986D5F41E2}
+	EndGlobalSection
+EndGlobal
